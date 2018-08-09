@@ -84,6 +84,9 @@
       mode: 0777
       state: directory
 
+  - name: Set core dump pattern on node
+    command: echo "/var/crashes/core.%e.%p.%h.%t" > /proc/sys/kernel/core_pattern
+
   - name: Create Contrail single YAML file for Contrail 4.0
     template:
       src: contrail-installer-4.j2

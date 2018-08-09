@@ -28,6 +28,9 @@
   when: contrail_version|int < 5
   with_items: "{{ image.results }}"
 
+- name: Set core dump pattern on node
+  command: echo "/var/crashes/core.%e.%p.%h.%t" > /proc/sys/kernel/core_pattern
+
 - name: Load Contrail docker images
   docker_image:
     name: "{{ item }}"
