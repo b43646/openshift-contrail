@@ -133,3 +133,4 @@
     oc patch scc restricted --patch='{ "runAsUser": { "type": "RunAsAny" } }'
   run_once: True
   delegate_to: "{{ contrail_master }}"
+  ignore_errors: True
