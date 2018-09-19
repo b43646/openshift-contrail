@@ -441,6 +441,8 @@ spec:
       - name: contrail-database-nodemgr
         image: "{{contrail_registry}}/contrail-nodemgr:{{contrail_container_tag}}"
         imagePullPolicy: ""
+        securityContext:
+          privileged: true
         envFrom:
         - configMapRef:
             name: env
@@ -496,7 +498,7 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
             - matchExpressions:
-              - key: "node-role.opencontrail.org/configdb"
+              - key: "opencontrail.org/controller"
                 operator: Exists
       tolerations:
       - key: node-role.kubernetes.io/master
@@ -522,6 +524,8 @@ spec:
       - name: contrail-config-database-nodemgr
         image: "{{contrail_registry}}/contrail-nodemgr:{{contrail_container_tag}}"
         imagePullPolicy: ""
+        securityContext:
+          privileged: true
         envFrom:
         - configMapRef:
             name: env
