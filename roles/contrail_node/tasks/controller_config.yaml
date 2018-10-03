@@ -40,6 +40,7 @@
     - { port: '8085', service: 'contrail-vrouter-introspect' }
     - { port: '8092', service: 'contrail-control-introspect-dns' }
     - { port: '8086', service: 'contrail-analytics-collector' }
+    - { port: '8087', service: 'contrail-schema-transformer-introspect' }
     - { port: '8081', service: 'contrail-analytics-api' }
     - { port: '2181', service: 'zookeeper' }
     - { port: '2182', service: 'zookeeper-analytics' }
@@ -57,7 +58,9 @@
     - { port: '7199', service: 'cassandra' }
     - { port: '7198', service: 'cassandra' }
     - { port: '8443', service: 'ifmap' }
-  when: "{{ ansible_default_ipv4['address'] in contrail_masters }}"
+  when: 
+    - "{{ ansible_default_ipv4['address'] in contrail_masters }}"
+    - not r_openshift_node_use_firewalld | default(false) | bool
 
 - name: Create kafka-logs folder with write permission
   file:
