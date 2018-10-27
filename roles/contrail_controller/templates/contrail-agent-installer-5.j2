@@ -73,6 +73,10 @@ spec:
         volumeMounts:
         - mountPath: /host/usr/bin
           name: host-usr-bin
+      - name: contrail-download-contrail-status-image
+        image: "{{ contrail_registry }}/contrail-status:{{ contrail_container_tag }}"
+        imagePullPolicy: "IfNotPresent"
+        command: ["/usr/bin/true"]
       - name: contrail-vrouter-kernel-init
         image: "{{ contrail_registry }}/contrail-vrouter-kernel-init:{{ contrail_container_tag }}"
         imagePullPolicy: ""

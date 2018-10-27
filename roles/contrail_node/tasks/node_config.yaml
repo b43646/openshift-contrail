@@ -2,9 +2,6 @@
 - name: Set core dump pattern on node
   command: echo "/var/crashes/core.%e.%p.%h.%t" > /proc/sys/kernel/core_pattern
 
-- name: Save iptables rules
-  command: service iptables save
-
 - name: Stat for loopback plugin
   stat:
     path: "/opt/cni/bin/loopback"
