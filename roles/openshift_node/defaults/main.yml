@@ -220,6 +220,12 @@ default_r_openshift_node_os_firewall_allow:
 - service: Contrail Config Zookeeper 2
   port: 43391/tcp
   condition: "{{ openshift_node_use_contrail }}"
+- service: Contrail Config Zookeeper 3
+  port: 2888/tcp
+  condition: "{{ openshift_node_use_contrail }}"
+- service: Contrail Config Zookeeper 4
+  port: 3888/tcp
+  condition: "{{ openshift_node_use_contrail }}"
 - service: Contrail RabbitMQ
   port: 4369/tcp
   condition: "{{ openshift_node_use_contrail }}"
@@ -255,6 +261,12 @@ default_r_openshift_node_os_firewall_allow:
   condition: "{{ openshift_node_use_contrail }}"
 - service: Contrail Analytics HTTP Opserver
   port: 8090/tcp
+  condition: "{{ openshift_node_use_contrail }}"
+- service: Contrail Analytics Zookeeper 3
+  port: 4888/tcp
+  condition: "{{ openshift_node_use_contrail }}"
+- service: Contrail Analytics Zookeeper 4
+  port: 5888/tcp
   condition: "{{ openshift_node_use_contrail }}"
 - service: Contrail Analytics Opserver
   port: 8081/tcp
