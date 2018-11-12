@@ -16,7 +16,7 @@
   when: openshift_master_cluster_public_hostname is defined
 
 - set_fact:
-    api_vip: "{{ groups.masters.0 | ipaddr }}"
+    api_vip: "{{ groups.masters.0}}"
   when: api_vip is not defined
 
 - name: validate api_vip hostname or ip
