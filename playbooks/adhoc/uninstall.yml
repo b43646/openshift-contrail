@@ -603,9 +603,10 @@
   become: yes
   tasks:
   - name: Find nodes which has Contrail vRouter
+    shell: ifconfig
     when: item == "vhost0"
     with_items:
-      - "{{ ansible_interfaces | map('replace', '-','_') | list }}"
+    - "{{ ansible_interfaces | map('replace', '-','_') | list }}"
     register: vhost_register
 
   - name: Reboot Contrail vRouter nodes
